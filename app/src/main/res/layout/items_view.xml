@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180dp"
+    android:id="@+id/container"
+    android:elevation="50dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="20dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/list_item_cont_popup"
+        android:layout_width="match_parent"
+        android:layout_margin="4dp"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/edit_txt_dat_tim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textStyle="italic"
+            android:gravity="center_horizontal"
+            android:text="Date And Time"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/date_m_popup1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="date"
+            android:gravity="center_horizontal"
+            android:layout_below="@id/edit_txt_dat_tim"
+            android:textColor="#040303"
+            android:textStyle="bold|italic"
+            android:background="@drawable/background_date"
+            android:text="abcd"
+            android:textSize="10dp"
+            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_alignParentRight="true"/>
+        <TextView
+            android:id="@+id/title_m_popup"
+            android:layout_below="@id/date_m_popup1"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:drawableStart="@drawable/ic_baseline_subtitles_24"
+            android:gravity="center_horizontal"
+            android:drawablePadding="10dp"
+            android:textStyle="bold"
+            android:background="@drawable/bgtitl"
+            android:paddingStart="10dp"
+            android:textColor="#121010"
+            android:paddingEnd="10dp"
+            android:layout_height="wrap_content"
+            android:text="No Title"/>
+
+        <TextView
+            android:layout_margin="5dp"
+            android:textColor="#121010"
+            android:id="@+id/notes_popup2"
+            android:padding="4dp"
+            android:drawableStart="@drawable/ic_baseline_note_24"
+            android:drawablePadding="10dp"
+            android:background="@drawable/bg_notes"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_m_popup"
+            android:gravity="center_horizontal"
+            android:text="notes"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
