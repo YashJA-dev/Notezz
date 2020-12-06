@@ -2,6 +2,7 @@ package com.yash.note_2_app.AndroidRoom.Database.Tables;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 @Entity(tableName = "archived_Table")
 public class Archived_Table {
@@ -17,13 +18,21 @@ public class Archived_Table {
     String title;
 
 
-
+@Ignore
     public Archived_Table(String note, String date, String time, String title) {
         this.note = note;
         this.date = date;
         this.time = time;
         this.title = title;
     }
+    public Archived_Table(String note, String date, String time, String title,int id) {
+        this.note = note;
+        this.date = date;
+        this.time = time;
+        this.title = title;
+        this.id=id;
+    }
+
 
     public int getId() {
         return id;

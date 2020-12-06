@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     Calendar calendar;
     Bundle bundle;
+    ImageView archived;
     ArrayList<Main_Table> main_tables1=new ArrayList<>();
     SimpleDateFormat simpleFormatter, simpleTimeFormat;
     String date, time;
@@ -139,11 +141,13 @@ public class MainActivity extends AppCompatActivity {
                                 viewModel.insertm(main_table);
                                 dialog2.dismiss();
                                 recyclerView.smoothScrollToPosition(0);
+                            }else {
+                                Main_Table main_table = new Main_Table(note, date, time, title);
+                                viewModel.insertm(main_table);
+                                dialog2.dismiss();
+                                recyclerView.smoothScrollToPosition(0);
                             }
-                            Main_Table main_table = new Main_Table(note, date, time, title);
-                            viewModel.insertm(main_table);
-                            dialog2.dismiss();
-                            recyclerView.smoothScrollToPosition(0);
+
                         }
 
                     }
@@ -186,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }).attachToRecyclerView(recyclerView);
+
 
         //recycle view listenter
 
@@ -240,21 +245,37 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
-    }
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId()==R.id.Archived){
-            Intent intent=new Intent(this,Archived.class);
-           startActivity(intent);
+        //recycle view long click listenter
 
-        }
-        return super.onOptionsItemSelected(item);
+        adapter.setObjectLongClickListener(new Adapter_R.ObjectLongClickListener() {
+            @Override
+            public void onClick(Main_Table main_table) {
+                Archived_Table archived_table=new Archived_Table(main_table.getNote(),
+                        main_table.getDate(),
+                        main_table.getTime(),
+                        main_table.getTitle(),
+                        main_table.getId());
+                viewModel.insertA(archived_table);
+                viewModel.deletem(main_table);
+                Toast.makeText(MainActivity.this,"Archived!",Toast.LENGTH_SHORT).show();
+            }
+        });
+        archived=findViewById(R.id.Archived_button);
+        archived.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,Archived.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.m_menu,menu);
-        return true;
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent=new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

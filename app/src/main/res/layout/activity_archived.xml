@@ -12,15 +12,40 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tool"
+            android:background="@drawable/appbargdiant"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll" >
+            app:layout_scrollFlags="scroll">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/backk0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:src="@drawable/ic_baseline_arrow_back_24">
+                </ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Archived Notes"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/backk0"
+                    android:textSize="20dp">
+
+                </TextView>
+            </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerView_A"
+        android:background="@drawable/bgarchived"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:listitem="@layout/items_view"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 

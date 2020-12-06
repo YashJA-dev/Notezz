@@ -23,6 +23,7 @@ import static android.graphics.Color.valueOf;
 
 public class Adapter_R extends ListAdapter<Main_Table,Adapter_R.ExampleViewHolder> {
     Context context;
+    ObjectLongClickListener objectLongClickListener;
     ObjectClickListener objectClickListener;
     int n=0;
 
@@ -45,11 +46,15 @@ public class Adapter_R extends ListAdapter<Main_Table,Adapter_R.ExampleViewHolde
                             oldItem.getDate().equals(newItem.getDate())&&
                             oldItem.getTime().equals(newItem.getTime())&&
                             oldItem.getTitle().equals(newItem.getTitle());
+
                 }
             };
 
     public void lister(ObjectClickListener objectClickListener){
         this.objectClickListener=objectClickListener;
+    }
+    public void setObjectLongClickListener(ObjectLongClickListener objectLongClickListener){
+        this.objectLongClickListener=objectLongClickListener;
     }
     public class ExampleViewHolder extends RecyclerView.ViewHolder{
         TextView date;
@@ -63,6 +68,13 @@ public class Adapter_R extends ListAdapter<Main_Table,Adapter_R.ExampleViewHolde
             title=itemView.findViewById(R.id.title_m_popup);
             note=itemView.findViewById(R.id.notes_popup2);
             cardView=itemView.findViewById(R.id.container);
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    objectLongClickListener.onClick(getItem(getAdapterPosition()));
+                    return false;
+                }
+            });
         }
     }
 
@@ -77,6 +89,8 @@ public class Adapter_R extends ListAdapter<Main_Table,Adapter_R.ExampleViewHolde
     @Override
     public void onBindViewHolder(@NonNull final ExampleViewHolder holder, final int position) {
         Main_Table main_table=getItem(position);
+        //itemView long click listener
+        //itemView click listener
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,9 +140,12 @@ public class Adapter_R extends ListAdapter<Main_Table,Adapter_R.ExampleViewHolde
     public Main_Table getNoteAt(int position){
         return getItem(position);
     }
+    //ObjectClickListener interface
     public interface ObjectClickListener{
         public void onClick(Main_Table main_table,ColorStateList colorStateList);
     }
-
-
-}
+    //itemView long click listener interface
+    public interface ObjectLongClickListener{
+        public void onClick(Main_Table main_table);
+        }
+    }
