@@ -1,4 +1,4 @@
-package com.yash.note_2_app;
+package com.yash.note_2_app.AndroidRoom.Screens;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +17,9 @@ import android.widget.Toast;
 
 import com.yash.note_2_app.AndroidRoom.Database.Tables.Archived_Table;
 import com.yash.note_2_app.AndroidRoom.Database.Tables.Main_Table;
-import com.yash.note_2_app.AndroidRoom.ViewModel.ViewModelM;
+import com.yash.note_2_app.AndroidRoom.Database.ViewModel.ViewModelM;
+import com.yash.note_2_app.AndroidRoom.Views.Adapter_A;
+import com.yash.note_2_app.R;
 
 import java.util.List;
 
@@ -37,7 +39,7 @@ ViewModelM viewModelM;
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Archived.this,MainActivity.class);
+                Intent intent=new Intent(Archived.this, MainActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_lift,R.anim.slide_out_right);
                 finish();
@@ -59,7 +61,7 @@ ViewModelM viewModelM;
             public void onClick() {
                 Toast.makeText(Archived.this,"Right swipe to remove from archive\nand" +
                         "\n" +
-                        "Right swipe to delete this Note",Toast.LENGTH_LONG).show();
+                        "Left swipe to delete this Note",Toast.LENGTH_LONG).show();
             }
         });
 

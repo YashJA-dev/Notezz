@@ -1,12 +1,12 @@
-package com.yash.note_2_app.AndroidRoom.Repository;
+package com.yash.note_2_app.AndroidRoom.Database.Repository;
 
 import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.yash.note_2_app.AndroidRoom.Database.Dao_M.Dao_A;
-import com.yash.note_2_app.AndroidRoom.Database.Dao_M.Dao_m;
+import com.yash.note_2_app.AndroidRoom.Database.Dao.Dao_A;
+import com.yash.note_2_app.AndroidRoom.Database.Dao.Dao_m;
 import com.yash.note_2_app.AndroidRoom.Database.Mdatabase;
 import com.yash.note_2_app.AndroidRoom.Database.Tables.Archived_Table;
 import com.yash.note_2_app.AndroidRoom.Database.Tables.Main_Table;

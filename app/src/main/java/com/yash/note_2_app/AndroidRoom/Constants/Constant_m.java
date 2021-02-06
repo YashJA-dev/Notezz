@@ -1,4 +1,4 @@
-package com.yash.note_2_app.AndroidRoom;
+package com.yash.note_2_app.AndroidRoom.Constants;
 
 public class Constant_m {
     String title;

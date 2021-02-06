@@ -1,7 +1,8 @@
-package com.yash.note_2_app;
+package com.yash.note_2_app.AndroidRoom.Views;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,22 +10,22 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yash.note_2_app.AndroidRoom.Database.Tables.Archived_Table;
+import com.yash.note_2_app.R;
 
 public class Adapter_A extends ListAdapter<Archived_Table, Adapter_A.ExampleViewHolder_A> {
 public  Context context;
     Onlongclick onlongclick;
 
     public class ExampleViewHolder_A extends RecyclerView.ViewHolder{
-        TextView date;
-        TextView title;
-        TextView note;
-        CardView cardView;
+        private TextView date;
+        private TextView title;
+        private TextView note;
+        private CardView cardView;
 
         public ExampleViewHolder_A(@NonNull View itemView) {
             super(itemView);
@@ -44,7 +45,7 @@ public  Context context;
     public void setLongClick(Onlongclick onlongclick){
         this.onlongclick=onlongclick;
     }
-    protected Adapter_A(Context context) {
+    public Adapter_A(Context context) {
         super(DIFFUTILL_CALLBACK);
         this.context=context;
 

@@ -1,4 +1,4 @@
-package com.yash.note_2_app.AndroidRoom.Database.Dao_M;
+package com.yash.note_2_app.AndroidRoom.Database.Dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -8,7 +8,6 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.yash.note_2_app.AndroidRoom.Database.Tables.Archived_Table;
-import com.yash.note_2_app.AndroidRoom.Database.Tables.Main_Table;
 
 import java.util.List;
 @Dao

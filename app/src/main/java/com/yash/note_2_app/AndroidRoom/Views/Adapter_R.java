@@ -1,7 +1,8 @@
-package com.yash.note_2_app;
+package com.yash.note_2_app.AndroidRoom.Views;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,15 +10,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.yash.note_2_app.AndroidRoom.Constant_m;
 import com.yash.note_2_app.AndroidRoom.Database.Tables.Main_Table;
-
-import java.util.ArrayList;
+import com.yash.note_2_app.R;
 
 import static android.graphics.Color.valueOf;
 
@@ -27,7 +25,7 @@ public class Adapter_R extends ListAdapter<Main_Table,Adapter_R.ExampleViewHolde
     ObjectClickListener objectClickListener;
     int n=0;
 
-    protected Adapter_R(Context context) {
+    public Adapter_R(Context context) {
 
         super(diff_callback);
         this.context=context;
@@ -75,6 +73,12 @@ public class Adapter_R extends ListAdapter<Main_Table,Adapter_R.ExampleViewHolde
                     return false;
                 }
             });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    objectClickListener.onClick(getItem(getAdapterPosition()),cardView.getBackgroundTintList());
+                }
+            });
         }
     }
 
@@ -91,13 +95,6 @@ public class Adapter_R extends ListAdapter<Main_Table,Adapter_R.ExampleViewHolde
         Main_Table main_table=getItem(position);
         //itemView long click listener
         //itemView click listener
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                objectClickListener.onClick(getItem(position),holder.cardView.getBackgroundTintList());
-            }
-        });
-
         if(n==0){
             holder.cardView.setBackgroundTintList(ColorStateList.valueOf(context.getResources().getColor(R.color.grey)));
             print(main_table,holder);
@@ -134,7 +131,12 @@ public class Adapter_R extends ListAdapter<Main_Table,Adapter_R.ExampleViewHolde
     }
     private void print( Main_Table main_table,ExampleViewHolder holder){
         holder.note.setText(main_table.getNote());
-        holder.title.setText(main_table.getTitle());
+        if (main_table.getTitle().isEmpty()){
+            holder.title.setHint("No title");
+            holder.title.setHintTextColor(Color.GRAY);
+        }else {
+            holder.title.setText(main_table.getTitle());
+        }
         holder.date.setText(main_table.getDate()+"  And  "+main_table.getTime());
     }
     public Main_Table getNoteAt(int position){

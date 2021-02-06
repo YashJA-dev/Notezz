@@ -1,4 +1,4 @@
-package com.yash.note_2_app.AndroidRoom.Database.Dao_M;
+package com.yash.note_2_app.AndroidRoom.Database.Dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

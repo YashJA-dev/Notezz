@@ -6,12 +6,10 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.yash.note_2_app.AndroidRoom.Database.Dao_M.Dao_A;
-import com.yash.note_2_app.AndroidRoom.Database.Dao_M.Dao_m;
+import com.yash.note_2_app.AndroidRoom.Database.Dao.Dao_A;
+import com.yash.note_2_app.AndroidRoom.Database.Dao.Dao_m;
 import com.yash.note_2_app.AndroidRoom.Database.Tables.Archived_Table;
 import com.yash.note_2_app.AndroidRoom.Database.Tables.Main_Table;
-
-import java.util.ArrayList;
 
 @Database(version = 1,entities = {Main_Table.class, Archived_Table.class})
 public abstract class Mdatabase extends RoomDatabase {
