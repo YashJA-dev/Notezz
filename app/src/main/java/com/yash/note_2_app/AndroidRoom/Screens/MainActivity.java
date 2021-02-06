@@ -57,11 +57,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //toolbar
-        setSupportActionBar((Toolbar) findViewById(R.id.tool));
-        Window window=getWindow();
-        window.setBackgroundDrawableResource(R.drawable.topbg);
+
         initialize();
+        viewModel = ViewModelProviders.of(this).get(ViewModelM.class);
         viewModel.getGetList_main().observe(this, new Observer<List<Main_Table>>() {
             @Override
             public void onChanged(List<Main_Table> main_tables) {
@@ -215,11 +213,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void initialize() {
-        recyclerView.setLayoutManager(layoutManager);
+        setToolbar();
+
+        recyclerView=findViewById(R.id.recycle_view_m);
         adapter = new Adapter_R(getApplicationContext());
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
         calendar = Calendar.getInstance();
-        viewModel = ViewModelProviders.of(this).get(ViewModelM.class);
+
         floatingActionButton = findViewById(R.id.floatingActionButton);
         //floting button dialog
         dialog2 = new Dialog(this);
@@ -230,6 +231,13 @@ public class MainActivity extends AppCompatActivity {
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.popup);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    }
+
+    private void setToolbar() {
+        //toolbar
+        setSupportActionBar((Toolbar) findViewById(R.id.tool));
+        Window window=getWindow();
+        window.setBackgroundDrawableResource(R.drawable.topbg);
     }
 
     @Override
