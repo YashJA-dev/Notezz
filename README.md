@@ -1,4 +1,5 @@
-# Pocket News
+# Notezz
+
 App created to save Notes in your Android Device
 # Used
 1 :- MVVM Architecture
