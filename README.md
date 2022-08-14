@@ -1,7 +1,13 @@
 # Notezz
 
-App created to save Notes in your Android Device
-# Used
-1 :- MVVM Architecture
+Android Application which is used to save Important Notes which can
+modified ,deleted or archived as per need of a user
 
-2 :- SQL Database
+
+# Used
+
+Worked With Android's Room Database On M.V.V.M Architecture
+
+# Features of Pocket News can be seen by clicking on link below
+
+https://www.youtube.com/watch?v=s5vMZ9m85iM
