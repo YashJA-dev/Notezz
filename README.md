@@ -8,6 +8,6 @@ modified ,deleted or archived as per need of a user
 
 Worked With Android's Room Database On M.V.V.M Architecture
 
-# Features of Pocket News can be seen by clicking on link below
+# Features of Notezz can be seen by clicking on link below
 
 https://www.youtube.com/watch?v=s5vMZ9m85iM
